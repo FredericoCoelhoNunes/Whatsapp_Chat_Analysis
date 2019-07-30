@@ -4,14 +4,15 @@ import scala.io.Source
 
 case class ChatParser () { //case class: the constructor is specified after the class name
   
-  // Regular expression to parse a Whatsapp message.
+  // Regular expression to parse a WhatsApp message.
   val parseExpression = """(.+?), (.+?) - (.+?):(.+)""".r
-
+  
   def read (filePath: String) : List[String] = {
     /** Reads a WhatsApp chat file into a list of strings. */
     
     return Source.fromFile(filePath, "UTF-8").getLines.toList 
   }
+  
   
   def parse (lines: List[String]) : List[Map[String, String]] = {
     /** Parses a list of messages
@@ -23,7 +24,7 @@ case class ChatParser () { //case class: the constructor is specified after the 
 
     val parsedLines : List[Map[String, String]] = lines.collect(x => x match {
       case parseExpression(date, time, name, msg) => Map(
-          "date" ->date,
+          "date" -> date,
           "time" -> time,
           "name" -> name,
           "msg" -> msg)
