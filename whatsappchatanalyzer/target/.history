@@ -1,1 +1,11 @@
 eclipse
+exit
+assembly
+sbt assembly
+reload
+assembly
+compiler
+compile
+reload
+compile
+assembly
